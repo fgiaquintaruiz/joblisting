@@ -35,3 +35,7 @@ out/
 ### VS Code ###
 .vscode/
 terraform.tfvars
+/.terraform/providers/registry.terraform.io/mongodb/mongodbatlas/1.4.6/windows_amd64/CHANGELOG.md
+/.terraform/providers/registry.terraform.io/mongodb/mongodbatlas/1.4.6/windows_amd64/LICENSE
+/.terraform/providers/registry.terraform.io/mongodb/mongodbatlas/1.4.6/windows_amd64/README.md
+/.terraform/providers/registry.terraform.io/mongodb/mongodbatlas/1.4.6/windows_amd64/terraform-provider-mongodbatlas_v1.4.6.exe
