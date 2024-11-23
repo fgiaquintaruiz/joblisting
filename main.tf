@@ -12,26 +12,26 @@ terraform {
 
   required_providers {
     mongodbatlas = {
-      source = "mongodb/mongodbatlas"
+      source  = "mongodb/mongodbatlas"
       version = "1.4.6"
     }
   }
 }
 
 provider "mongodbatlas" {
-  public_key = var.public_key
+  public_key  = var.public_key
   private_key = var.private_key
 }
 
 resource "mongodbatlas_cluster" "db-cluster" {
-  project_id              = var.atlasprojectid
-  name                    = var.atlas_cluster_name
+  project_id = var.atlasprojectid
+  name       = var.atlas_cluster_name
 
   # Provider Settings "block"
-  provider_name = "TENANT" //free tier
-  backing_provider_name = "AWS"
-  provider_region_name = "EU_WEST_3" //free tier
-  provider_instance_size_name = "M0" //free tier
+  provider_name               = "TENANT" //free tier
+  backing_provider_name       = "AWS"
+  provider_region_name        = "EU_WEST_3" //free tier
+  provider_instance_size_name = "M0"        //free tier
 }
 
 
