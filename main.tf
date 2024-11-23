@@ -19,13 +19,13 @@ terraform {
 }
 
 provider "mongodbatlas" {
-  public_key  = var.public_key
-  private_key = var.private_key
+  public_key  = var.ATLAS_PUBLIC_KEY
+  private_key = var.ATLAS_PRIVATE_KEY
 }
 
 resource "mongodbatlas_cluster" "db-cluster" {
-  project_id = var.atlasprojectid
-  name       = var.atlas_cluster_name
+  project_id = var.ATLAS_PROJECT_ID
+  name       = var.ATLAS_CLUSTER_NAME
 
   # Provider Settings "block"
   provider_name               = "TENANT" //free tier
@@ -36,14 +36,14 @@ resource "mongodbatlas_cluster" "db-cluster" {
 
 
 resource "mongodbatlas_database_user" "dbuser" {
-  username           = var.atlas_dbuser
-  password           = var.atlas_dbpassword
-  project_id         = var.atlasprojectid
+  username           = var.ATLAS_DB_USER
+  password           = var.ATLAS_DB_PASSWORD
+  project_id         = var.ATLAS_PROJECT_ID
   auth_database_name = "admin"
 
   roles {
     role_name     = "readWrite"
-    database_name = var.atlas_dbname
+    database_name = var.ATLAS_DB_NAME
   }
 
 }
