@@ -7,6 +7,9 @@ import io.ktor.server.config.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import mu.KotlinLogging
+
+private val logger = KotlinLogging.logger {}
 
 fun Application.configureDatabases() {
     val mongoDatabase = connectToMongoDB()
@@ -96,13 +99,15 @@ fun Application.configureDatabases() {
  * @returns [MongoDatabase] instance
  * */
 fun Application.connectToMongoDB(): MongoDatabase {
+
     val user = environment.config.tryGetString("db.mongo.user")
     val password = environment.config.tryGetString("db.mongo.password")
-    val host = environment.config.tryGetString("db.mongo.host") ?: "127.0.0.1"
-    val port = environment.config.tryGetString("db.mongo.port") ?: "27017"
+    val host = environment.config.tryGetString("db.mongo.host") //?: "127.0.0.1"
+    val port = environment.config.tryGetString("db.mongo.port") //?: "27017"
     val maxPoolSize = environment.config.tryGetString("db.mongo.maxPoolSize")?.toInt() ?: 20
     val databaseName = environment.config.tryGetString("db.mongo.database.name") ?: "myDatabase"
 
+    logger.trace("user: {}, password: {}, host: {}, port: {}", user, password, host, port)
     val credentials = user?.let { userVal -> password?.let { passwordVal -> "$userVal:$passwordVal@" } }.orEmpty()
     val uri = "mongodb://$credentials$host:$port/?maxPoolSize=$maxPoolSize&w=majority"
 
