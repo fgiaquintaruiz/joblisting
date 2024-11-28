@@ -39,7 +39,11 @@ env:
   # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: container           # set this to the name of the container in the
   # containerDefinitions section of your task definition
-
+  MONGODB_HOST: ${{ secrets.MONGODB_HOST }}
+  MONGODB_USER: ${{ secrets.MONGODB_USER }}
+  MONGODB_LOCAL_PORT: ${{ secrets.MONGODB_LOCAL_PORT }}
+  MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+  
 permissions:
   contents: read
 
@@ -57,7 +61,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build -DMONGODB_HOST=$MONGODB_HOST -DMONGODB_USER=$MONGODB_USER -DMONGODB_PASSWORD=MONGODB_PASSWORD -DMONGODB_LOCAL_PORT=$MONGODB_LOCAL_PORT
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
