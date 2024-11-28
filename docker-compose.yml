@@ -1,0 +1,20 @@
+services:
+  app:
+    build: ../.
+    restart: on-failure
+    env_file: .env
+    ports:
+      - 6868:8080
+    environment:
+      - MONGODB_HOST= ${{ secrets.MONGODB_HOST }}
+      - MONGODB_LOCAL_PORT=${{ secrets.MONGODB_LOCAL_PORT }}
+      - MONGODB_USER=${{ secrets.MONGODB_USER }}
+      - MONGODB_PASSWORD=${{ secrets.MONGODB_PASSWORD }}
+#      SPRING_APPLICATION_JSON: '{
+#
+#          "spring.data.mongodb.uri" : "mongodb://$MONGODB_USER:$MONGODB_PASSWORD@mongo_db:$MONGODB_DOCKER_PORT/$MONGODB_DATABASE?authSource=admin"
+#        }'
+#    volumes:
+#      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
