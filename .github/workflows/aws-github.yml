@@ -83,7 +83,7 @@ jobs:
           # Build a docker container and
           # push it to ECR so that it can
           # be deployed to ECS.
-          docker build --build-arg MONGODB_HOST=$MONGODB_HOST,MONGODB_USER=$MONGODB_USER,MONGODB_PASSWORD=$MONGODB_PASSWORD,MONGODB_LOCAL_PORT=$MONGODB_LOCAL_PORT -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build --build-arg MONGODB_HOST=${{ env.MONGODB_HOST }},MONGODB_USER=${{ env.MONGODB_USER }},MONGODB_PASSWORD=${{ env.MONGODB_PASSWORD }},MONGODB_LOCAL_PORT=${{ env.MONGODB_LOCAL_PORT }} -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
