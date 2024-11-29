@@ -7,7 +7,5 @@ ktor:
 
 db:
     mongo:
-        host: $MONGODB_HOST
-        port: $MONGODB_LOCAL_PORT
-        user: $MONGODB_USER
-        password: $MONGODB_PASSWORD
+        host: localhost
+        port: 7017
