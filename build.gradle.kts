@@ -1,5 +1,3 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.ktor)
@@ -39,6 +37,7 @@ dependencies {
 }
 
 tasks.withType<Jar> {
+    isZip64 = true
     manifest {
         attributes["Main-Class"] = "com.fgiaquintaruiz.ApplicationKt"
     }
@@ -53,5 +52,3 @@ tasks.withType<Jar> {
         configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
     })
 }
-
-tasks.withType<ShadowJar> { isZip64 = true }
