@@ -30,6 +30,9 @@ dependencies {
     implementation(libs.logback.classic)
     implementation(libs.ktor.server.config.yaml)
     implementation(libs.logging)
+    implementation("software.amazon.awssdk:aws-sdk-java:2.29.27")
+    implementation("com.google.code.gson:gson:2.11.0")
+//    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.2")
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
 }

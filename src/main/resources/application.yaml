@@ -7,5 +7,5 @@ ktor:
 
 db:
     mongo:
-        host: localhost
-        port: 7017
+        host: cluster0.29zfo.mongodb.net
+        port: 27017

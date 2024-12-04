@@ -1,15 +1,15 @@
 db = db.getSiblingDB("myDatabase");
 
-//db.createUser({
-//    user: "admin",
-//    pwd: "admin",
-//    roles: [
-//      {
-//        role: 'readWrite',
-//        db: 'myDatabase'
-//      },
-//    ],
-//  });
+db.createUser({
+    user: "admin",
+    pwd: "admin",
+    roles: [
+      {
+        role: 'readWrite',
+        db: 'myDatabase'
+      },
+    ],
+  });
 
 db.createCollection("jobs");
 
